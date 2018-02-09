@@ -28,8 +28,8 @@ def scrape(url, write_to_filename, overwrite=True):
     with open(write_to_filename, o) as f:
         for item in item_list:
             title = item.find('h2').getText()
-            # get only the number from the price, removes currency shortname and dollar sign
             brand = item.find('div', 'a-spacing-mini').findAll('span', re.compile("secondary"))[1].getText()
+            # get only the number from the price, removes currency shortname and dollar sign
             price = re.sub(("[A-z $]"),"",item.find('span', re.compile("price")).getText())
             img = item.find('img').get('src')
 
